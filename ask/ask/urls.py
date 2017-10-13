@@ -16,6 +16,13 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 
-urlpatterns = [
+urlpatterns =[
     url(r'^admin/', admin.site.urls),
+    url(r'^',includ('qa.urls')),
+    url(r'^login/$',includ('qa.urls')),
+    url(r'^signup/$',includ('qa.urls')),
+    url(r'^auestion/[!/d+!]/$',includ('qa.urls')),
+    url(r'^ask/$',includ('qa.urls')),
+    url(r'^popular/$',includ('qa.urls')),
+    url(r'^new/',includ('qa.urls')),
 ]
