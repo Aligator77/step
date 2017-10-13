@@ -1,15 +1,14 @@
 '''/
 /login/
 /signup/
-/question/<123>/    # вместо <123> - произвольный ID
 /ask/
 /popular/
 /new/
 '''
 
 
-from django.conf.urls import url
-from qa.views import test
+#from django.conf.urls import url
+#from qa.views import test
 #from qa.views import test, question_list, question_detail, popular
 #from qa.views import question_ask, question_answer
 #from qa.views import user_signup, user_login, user_logout
@@ -27,7 +26,7 @@ urlpatterns = [
 ]
 ############
 from django.conf.urls import url
-from qa.views import test, mainpg, question, popular, question_ask, question_ans, user_login, user_signup, user_logout
+from qa.views import test#, mainpg, question, popular, question_ask, question_ans, user_login, user_signup, user_logout
 
 urlpatterns = [
 	url(r'^$', mainpg, name='mainpg'),
@@ -42,9 +41,11 @@ urlpatterns = [
 ]
 
 '''
+from django.conf.urls import url
+from qa.views import test#, mainpg, question, popular, question_ask, question_ans, user_login, user_signup, user_logout
 
 urlpatterns =[
-    url(r'^',test,name='all'),
+    url(r'^$',test,name='all'),
     url(r'^login/$',test,name='login'),
     url(r'^signup/$',test,name='reg'),
     url(r'^auestion/[!/d+!]/$',test,name='quest'),
