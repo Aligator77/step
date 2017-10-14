@@ -9,16 +9,19 @@ sudo ln -sf /home/box/web/etc/gunicorn_ask.conf   /etc/gunicorn.d/gunicorn_ask.c
 sudo /etc/init.d/gunicorn restart
 
 sudo /etc/init.d/mysql start
-echo 'if need create table press 1'
-read create_db
-if [ $create_db -eq 1] ; then
-	#sudo rm -r /etc/mysql/my.cnf
-	#sudo ln -sf /home/box/web/etc/my.cnf  /etc/mysql/my.cnf
-	sudo /etc/init.d/mysql start
-
-	mysql -uroot -e "CREATE DATABASE qa"
-	mysql -uroot -e "CREATE USER 'qauser'@'localhost' IDENTIFIED BY 'qapass';
-				 GRANT ALL ON qa.* TO 'qauser'@'localhost';"
-
-	#sudo python /home/box/web/ask/manage.py syncdb
-fi
+read -p "If need create table press Y" createdb
+case $createdb in
+    'y'|'Y')
+        #sudo rm -r /etc/mysql/my.cnf sudo ln -sf 
+        #/home/box/web/etc/my.cnf /etc/mysql/my.cnf
+        #sudo /etc/init.d/mysql start
+        mysql -uroot -e "CREATE DATABASE qa"
+        mysql -uroot -e "CREATE USER 'qauser'@'localhost' IDENTIFIED BY 
+'qapass';
+                                 GRANT ALL ON qa.* TO 
+'qauser'@'localhost';"
+        #sudo python /home/box/web/ask/manage.py syncdb
+;;
+    'n'|'N') echo 'OK';;
+    *) echo 'OK' ;;
+esac
