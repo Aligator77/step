@@ -25,3 +25,7 @@ case $createdb in
     'n'|'N') echo 'OK';;
     *) echo 'OK' ;;
 esac
+
+
+#python manage.py makemigrations
+#python manage.py migrate
