@@ -3,4 +3,4 @@ from django.shortcuts import render
 # Create your views here.
 from django.http import HttpResponse 
 def test(request, *args, **kwargs):
-    return pagination(request, *args)
+    return render(pagination(request, *args), 'templates'+kwargs['name']+'.html')
