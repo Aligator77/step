@@ -9,7 +9,7 @@ sudo ln -sf /home/box/web/etc/gunicorn_ask.conf   /etc/gunicorn.d/gunicorn_ask.c
 sudo /etc/init.d/gunicorn restart
 
 sudo /etc/init.d/mysql start
-read -p "If need create table press Y" createdb
+read -p "If need create table press Y\n" createdb
 case $createdb in
     'y'|'Y')
         #sudo rm -r /etc/mysql/my.cnf sudo ln -sf 
@@ -26,6 +26,13 @@ case $createdb in
     *) echo 'OK' ;;
 esac
 
-
-#python manage.py makemigrations
-#python manage.py migrate
+read -p 'if need make migration press Y\n' migrate
+case $migrate in
+    'y'|'Y') 
+cd ask
+python manage.py makemigrations
+python manage.py migrate
+echo 'OK';;
+    'n'|'N') echo 'OK';;
+    *) echo 'OK';;
+esac
