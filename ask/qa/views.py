@@ -5,4 +5,4 @@ from . import custom_pagination as pagination
 from django.http import HttpResponse 
 def test(request, page_slug='index'):
     templ_type = page_slug;
-    return render(request, 'templates/'+templ_type+'.html')
+    return render(request, templ_type+'.html')
