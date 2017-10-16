@@ -45,9 +45,9 @@ from django.conf.urls import url
 from qa.views import test#, mainpg, question, popular, question_ask, question_ans, user_login, user_signup, user_logout
 
 urlpatterns =[
-    url(r'^$',test,name='main_page'),
-    url(r'^(?P<page_slug>)/$',test,name='all'),
-    url(r'^(?P<page_slug>)/(?P<id>)/$',test,name='all_with_id'),
+    url(r'^$',test,name='main_page', kwargs={'page_slug':'index'}),
+    url(r'^(?P<page_slug>)/$',test,name='all', kwargs={'page_slug':'page_slug'}),
+    url(r'^(?P<page_slug>)/(?P<id>)/$',test,name='all_with_id',kwargs={'page_slug':'page_slug'}),
     url(r'^signup/$',test,name='reg'),
     url(r'^auestion/[!/d+!]/$',test,name='quest'),
     url(r'^ask/$',test,name='ask'),
